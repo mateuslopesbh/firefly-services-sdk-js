@@ -53,7 +53,6 @@ export { CompressionType } from "./models/CompressionType";
 export type { ConvertToActionsJsonRequest } from "./models/ConvertToActionsJsonRequest";
 export type { CreateArtboardRequest } from "./models/CreateArtboardRequest";
 export type { CreateDocumentRequest } from "./models/CreateDocumentRequest";
-export type { CreateMaskRequest } from "./models/CreateMaskRequest";
 export type { CreateRenditionRequest } from "./models/CreateRenditionRequest";
 export type { CropOptions } from "./models/CropOptions";
 export type { DeleteDetails } from "./models/DeleteDetails";

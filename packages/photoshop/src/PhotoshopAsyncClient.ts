@@ -24,7 +24,6 @@ import type { ApplyDepthBlurRequest } from "./models/ApplyDepthBlurRequest";
 import type { ConvertToActionsJsonRequest } from "./models/ConvertToActionsJsonRequest";
 import type { CreateArtboardRequest } from "./models/CreateArtboardRequest";
 import type { CreateDocumentRequest } from "./models/CreateDocumentRequest";
-import type { CreateMaskRequest } from "./models/CreateMaskRequest";
 import type { CreateRenditionRequest } from "./models/CreateRenditionRequest";
 import type { DocumentManifestRequest } from "./models/DocumentManifestRequest";
 import type { EditTextLayerRequest } from "./models/EditTextLayerRequest";
@@ -442,34 +441,6 @@ export class PhotoshopAsyncClient extends BaseServiceClient {
         return this._httpRequest.request({
             method: "POST",
             url: "/v2/remove-background",
-            body: requestBody,
-            mediaType: "application/json",
-            errors: {
-                400: `InputValidationError`,
-                402: `Trial Limit Exceeded Error`,
-                403: `Unauthorized`,
-                404: `Requested resource was not found`,
-                409: `Unable to upload asset`,
-                410: `Asset Link Invalid`
-            },
-            signal: options?.signal
-        });
-    }
-    /**
-     * Create Mask API
-     * Isolate a subject of interest in an image (people, objects, etc) and generate an image mask
-     * @param requestBody The input image and the mask parameters
-     * @param options Additional options to send any additional data or cancel the request
-     * @returns JobStatusLinkResponse response
-     * @throws {ApiError}
-     */
-    public createMaskAsync(
-        requestBody: CreateMaskRequest,
-        options?: ApiOptions
-    ): Promise<ApiResponse<JobStatusLinkResponse>> {
-        return this._httpRequest.request({
-            method: "POST",
-            url: "/sensei/mask",
             body: requestBody,
             mediaType: "application/json",
             errors: {

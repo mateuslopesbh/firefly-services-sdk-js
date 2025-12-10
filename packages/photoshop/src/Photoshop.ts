@@ -29,7 +29,6 @@ import type { ApplyDepthBlurRequest } from "./models/ApplyDepthBlurRequest";
 import type { ConvertToActionsJsonRequest } from "./models/ConvertToActionsJsonRequest";
 import type { CreateArtboardRequest } from "./models/CreateArtboardRequest";
 import type { CreateDocumentRequest } from "./models/CreateDocumentRequest";
-import type { CreateMaskRequest } from "./models/CreateMaskRequest";
 import type { CreateRenditionRequest } from "./models/CreateRenditionRequest";
 import type { DocumentManifestRequest } from "./models/DocumentManifestRequest";
 import type { EditTextLayerRequest } from "./models/EditTextLayerRequest";
@@ -322,23 +321,6 @@ export class PhotoshopClient extends BaseServiceClient {
     ): Promise<ApiResponse<SenseiJobApiResponse>> {
         return new SenseiAsyncJob(
             this._photoshopAsyncClient.removeBackgroundAsync(requestBody, options),
-            this._photoshopAsyncClient.senseiJobStatus
-        );
-    }
-    /**
-     * Create Mask API
-     * Isolate a subject of interest in an image (people, objects, etc) and generate an image mask
-     * @param requestBody The input image and the mask parameters
-     * @param options Additional options to send any additional data or cancel the request
-     * @returns SenseiJobApiResponse Job status
-     * @throws {ApiError}
-     */
-    public async createMask(
-        requestBody: CreateMaskRequest,
-        options?: ApiOptions
-    ): Promise<ApiResponse<SenseiJobApiResponse>> {
-        return new SenseiAsyncJob(
-            this._photoshopAsyncClient.createMaskAsync(requestBody, options),
             this._photoshopAsyncClient.senseiJobStatus
         );
     }
