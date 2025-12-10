@@ -51,20 +51,19 @@ async function generateAndRemoveBackground(prompt) {
         
         console.log("Successfully generated the Firefly Image");
 
-        // Use Photoshop autoCutout api to perform operation on the generated image.
-        const psInput = {
-            href: firstImageUrl, 
-            storage: StorageType.EXTERNAL
-        };
-
-        const psOutput = {
-            href: "<psOutputHref>", // Generate Pre-signed PUT URL to save the generated output file. 
-            storage: "<psOutputStorage>" // example: StorageType.DROPBOX or StorageType.EXTERNAL or StorageType.AZURE
-        };
-
+        // Use Photoshop removeBackground v2 API to perform operation on the generated image.
         const psRequestBody = {
-            input: psInput, 
-            output: psOutput
+            image: {
+                source: {
+                    url: firstImageUrl
+                }
+            },
+            mode: "cutout",
+            output: {
+                mediaType: "image/png"
+            },
+            trim: false,
+            colorDecontamination: 1
         }
 
         const removeBg = await photoshop.removeBackground(psRequestBody); // Remove Background

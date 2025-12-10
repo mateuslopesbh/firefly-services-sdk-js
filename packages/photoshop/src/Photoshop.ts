@@ -309,7 +309,7 @@ export class PhotoshopClient extends BaseServiceClient {
         );
     }
     /**
-     * Remove Background API
+     * Remove Background API (v2)
      * Isolate subject of interest in an image and remove background.
      * @param requestBody The input image and the cutout mask parameters
      * @param options Additional options to send any additional data or cancel the request

@@ -118,7 +118,7 @@ export type { PlayPhotoshopActionsRequest } from "./models/PlayPhotoshopActionsR
 export type { PsJobApiResponse } from "./models/PsJobApiResponse";
 export type { PsJobResponse } from "./models/PsJobResponse";
 export type { PsOutputDetails } from "./models/PsOutputDetails";
-export type { RemoveBackgroundRequest } from "./models/RemoveBackgroundRequest";
+export type { BackgroundColor, ImageSource, ImageInput, RemoveBackgroundOutput, RemoveBackgroundRequest } from "./models/RemoveBackgroundRequest";
 export type { RenditionLinkDetails } from "./models/RenditionLinkDetails";
 export type { RenditionLinks } from "./models/RenditionLinks";
 export type { ReplaceSmartObjectRequest } from "./models/ReplaceSmartObjectRequest";

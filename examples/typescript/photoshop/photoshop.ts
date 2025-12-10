@@ -16,10 +16,9 @@
  
 **************************************************************************/
 
-import { PhotoshopClient, RemoveBackgroundRequest, SenseiOutputDetails } from "@adobe/photoshop-apis";
+import { PhotoshopClient, RemoveBackgroundRequest } from "@adobe/photoshop-apis";
 import { CoreTypes, FireflyClient, GenerateImagesResponse } from "@adobe/firefly-apis";
 import { ServerToServerTokenProvider } from "@adobe/firefly-services-common-apis";
-import { StorageDetails, StorageType } from "@adobe/lightroom-apis";
 
 /**
  * Function to generate an image and remove image background and save the file to the given output post pre-signed URL.
@@ -55,20 +54,19 @@ async function generateAndRemoveBackground(prompt: string) {
 
         console.log("Successfully generated the Firefly Image");
 
-        // Use Photoshop autoCutout api to perform operation on the generated image.
-        const psInput: StorageDetails = {
-            href: firstImageUrl ?? "",
-            storage: StorageType.EXTERNAL,
-        };
-
-        const psOutput: SenseiOutputDetails = {
-            href: "<psOutputHref>", // Generate Pre-signed PUT URL to save the generated output file.
-            storage: StorageType.EXTERNAL, // example: StorageType.DROPBOX or StorageType.EXTERNAL or StorageType.AZURE
-        };
-
+        // Use Photoshop removeBackground v2 API to perform operation on the generated image.
         const psRequestBody: RemoveBackgroundRequest = {
-            input: psInput,
-            output: psOutput,
+            image: {
+                source: {
+                    url: firstImageUrl ?? ""
+                }
+            },
+            mode: "cutout",
+            output: {
+                mediaType: "image/png"
+            },
+            trim: false,
+            colorDecontamination: 1
         };
 
         const removeBg = await photoshop.removeBackground(psRequestBody); // Remove Background

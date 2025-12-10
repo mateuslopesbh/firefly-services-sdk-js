@@ -15,9 +15,46 @@
  * from Adobe.
 
  **************************************************************************/
-import type { SenseiOutputDetails } from "./SenseiOutputDetails";
-import type { StorageDetails } from "./StorageDetails";
+/**
+ * Background color for the output image
+ */
+export type BackgroundColor = {
+    red: number;
+    green: number;
+    blue: number;
+    alpha: number;
+};
+
+/**
+ * Image source for v2 API
+ */
+export type ImageSource = {
+    url: string;
+};
+
+/**
+ * Image input for v2 API
+ */
+export type ImageInput = {
+    source: ImageSource;
+};
+
+/**
+ * Output configuration for v2 API
+ */
+export type RemoveBackgroundOutput = {
+    mediaType: string;
+};
+
+/**
+ * Remove Background Request for v2 API
+ * Isolate subject of interest in an image and remove background.
+ */
 export type RemoveBackgroundRequest = {
-    input: StorageDetails;
-    output: SenseiOutputDetails;
+    image: ImageInput;
+    mode: "cutout";
+    output: RemoveBackgroundOutput;
+    trim?: boolean;
+    backgroundColor?: BackgroundColor;
+    colorDecontamination?: number;
 };
