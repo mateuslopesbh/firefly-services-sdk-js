@@ -9,6 +9,15 @@
         "minor": [
           {
             "comment": "  - Updated removeBackground API to use v2 endpoint (/v2/remove-background)"
+          },
+          {
+            "comment": " - Removed deprecated `createMask` API"
+          },
+          {
+            "comment": "  - Updated API documentation links to new structure"
+          },
+          {
+            "comment": "  - Updated request/response types for v2 API compatibility"
           }
         ]
       }

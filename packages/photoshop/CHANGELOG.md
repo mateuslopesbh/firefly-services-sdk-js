@@ -8,6 +8,10 @@ Thu, 22 Jan 2026 19:37:53 GMT
 ### Minor changes
 
 -   - Updated removeBackground API to use v2 endpoint (/v2/remove-background)
+-   - Removed deprecated `createMask` API 
+-   - Updated API documentation links to new structure
+-   - Updated request/response types for v2 API compatibility
+
 
 ## 2.0.1
 Tue, 24 Jun 2025 10:13:05 GMT
